@@ -100,7 +100,7 @@ function mostrarPropiedades(propiedades = []) {
 }
 
 function verDetalles(id) {
-    window.location.href = `/Estudiante/detalles.html?id=${id}`;
+    window.location.href = `../Estudiante/detalles.html?id=${id}`;
 }
 
 function checkFavorito(idPropiedad) {

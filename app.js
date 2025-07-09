@@ -51,7 +51,7 @@ app.use(session({
     secret: 'clave_secreta', // Clave secreta para firmar la cookie
     resave: false,            // No reescribir la sesión si no ha cambiado
     saveUninitialized: false,  // Guardar la sesión incluso si no hay datos
-    cookie: { secure: false } // Desactivar 'secure' en desarrollo (cambiar a true en producción)
+    cookie: { secure: true } // Desactivar 'secure' en desarrollo (cambiar a true en producción)
 }));
 
 // CRUD Usuarios
@@ -999,7 +999,7 @@ app.get('/api/puede-pagar/:id_propiedad', async (req, res) => {
             SELECT COUNT(*) AS total
             FROM Pagos
             WHERE id_propiedad = ? AND estado_pago = 'pagado'
-              AND fecha_pago >= (NOW() - INTERVAL 30 SECOND)
+              AND fecha_pago >= (NOW() - INTERVAL 150 SECOND)
         `, [id_propiedad]);
 
         const totalPagos = pagos[0].total;

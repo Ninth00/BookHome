@@ -181,7 +181,7 @@ fetch(`/api/puede-pagar/${id_propiedad}`)
 
                         setTimeout(() => {
                             location.reload(); // O volver a consultar /api/puede-pagar si deseas
-                        }, 30000);
+                        }, 150000);
                     });
                 },
                 onError: function(err) {

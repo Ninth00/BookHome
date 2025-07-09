@@ -127,10 +127,10 @@ formSignUp.addEventListener("submit", function (e) {
                 .then(data => {
                     if (data.authenticated) {
                         if(rol === 'arrendador'){
-                            window.location.href = '/Arrendador/Arrendador.html'; 
+                            window.location.href = '../Arrendador/Arrendador.html'; 
                         }
                         else{
-                            window.location.href = '/Estudiante/Estudiante.html';
+                            window.location.href = '../Estudiante/Estudiante.html';
                         }
                     } else {
                         showAlert('error', 'Error en el registro', 'No se pudo registrar el usuario.');
@@ -198,10 +198,10 @@ formSignIn.addEventListener("submit", function (e) {
             const rol = data.rol;
             if (rol === 'arrendador') {
                 formSignIn.reset();
-                window.location.href = '/Arrendador/Arrendador.html';
+                window.location.href = '../Arrendador/Arrendador.html';
             } else {
                 formSignIn.reset();
-                window.location.href = '/Estudiante/Estudiante.html';
+                window.location.href = '../Estudiante/Estudiante.html';
             }
         } else {
             showAlert('error', 'Error en inicio de sesión', data.message);

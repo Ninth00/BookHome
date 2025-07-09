@@ -5,7 +5,7 @@ document.getElementById('logout-button').addEventListener('click', async () => {
   
       if (response.ok) {
         // Redirige al usuario a la página de inicio de sesión
-        window.location.href = '/Inicio/index.html';
+        window.location.href = '../Inicio/index.html';
       } else {
         alert('Hubo un error al cerrar la sesión.');
       }
