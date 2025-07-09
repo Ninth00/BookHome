@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Propiedad - Book-Home</title>
+    <link rel="stylesheet" href="/CSS/vender.css">
+    <script type="module" src="https://cdn.jsdelivr.net/npm/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script nomodule src="https://cdn.jsdelivr.net/npm/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="/CSS/swal-estilos.css">
+
+</head>
+<header class="header">
+    <div class="menu">
+        <a href="/Arrendador/Arrendador.html" class="logo"><img src="/IMAGENES/img17.png" alt="Logo" class="logo-img"></a>
+        <input type="checkbox" id="menu-toggle">
+        <label for="menu-toggle" class="menu-icon">&#9776;</label>
+        <nav class="navbar">
+            <ul>
+                <li><a href="/Arrendador/Arrendador.html">Inicio</a></li>
+                <li><a href="/Arrendador/nosotros2.html">Nosotros</a></li>
+                <li class="vender">
+                    <a href="/Arrendador/vender.html">Arrendar</a>
+                    <ul class="submenu">
+                        <li><a href="/Arrendador/Mis_propiedades.html">Mis propiedades</a></li>
+                    </ul>
+                </li>
+                <li><a href="/Arrendador/Chats.html">Chats</a></li>
+                <li><a href="/Inicio/logout.html">Cerrar sesión</a></li>
+                <li><a>  </a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="header-content container">
+        <div class="header-txt">
+            <h1>REALIZA AQUI TUS CAMBIOS</h1>
+            <p>Publica tu propiedad en minutos y llega a cientos de estudiantes que buscan un lugar para vivir cerca de su universidad. Completa el formulario con los datos de tu inmueble y hazlo visible en nuestra plataforma de forma rápida y segura.
+                <hr>
+            </p>
+        </div>
+    </div>
+</header>
+<body>
+    <section class="content">
+        <form id="formulario-propiedad" enctype="multipart/form-data">
+            <!-- Otros campos de propiedad -->
+            <div>
+                <label for="tipo_propiedad">Tipo de propiedad:</label>
+                <select id="tipo_propiedad" name="tipo_propiedad" onchange="toggleHabitaciones()">
+                    <option value="habitacion">Habitación</option>
+                    <option value="casa">Casa</option>
+                    <option value="departamento">Departamento</option>
+                </select>
+            </div>
+        
+            <div>
+                <label for="precio">Precio:</label>
+                <input type="number" id="precio" name="precio" step="0.01" >
+            </div>
+        
+            <div>
+                <label for="descripcion">Descripción:</label>
+                <textarea id="descripcion" name="descripcion" ></textarea>
+            </div>
+        
+            <div>
+                <label for="metros_cuadrados">Metros cuadrados:</label>
+                <input type="number" id="metros_cuadrados" name="metros_cuadrados" step="0.01" >
+            </div>
+        
+            <!-- Este campo de habitaciones se ocultará si se selecciona "Habitación" -->
+            <div id="habitaciones-div">
+                <label for="habitaciones">Habitaciones:</label>
+                <input type="number" id="habitaciones" name="habitaciones" >
+            </div>
+        
+            <div>
+                <label for="banos">Baños:</label>
+                <input type="number" id="banos" name="banos" >
+            </div>
+        
+            <!-- Apartado para compañeros de cuarto -->
+            <div>
+                <label for="compañeros_cuarto">¿Tiene compañeros de cuarto?</label>
+                <select id="compañeros_cuarto" name="compañeros_cuarto" onchange="toggleCompCuarto()">
+                    <option value="1">Sí</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+
+            <div id="Comparte">
+                <label for="numCompCuarto">¿Cuantos?</label>
+                <input type="number" id="numero_compañeros" name="numero_compañeros">
+            </div>
+        
+            <!-- Apartado para las reglas -->
+            <div>
+                <label for="reglas">Reglas:</label>
+                <textarea id="reglas" name="reglas" placeholder="Especifica las reglas de la propiedad"></textarea>
+            </div>
+        
+            <!-- Dirección -->
+            <div>
+                <label for="">Favor de poner las direcciones sin abreviaduras, ej. X Lic., ✓ Licenciado</label>
+            </div>
+            <div>
+                <label for="calle">Calle:</label>
+                <input type="text" id="calle" name="calle" >
+            </div>
+        
+            <div>
+                <label for="numero_exterior">Número Exterior:</label>
+                <input type="text" id="numero_exterior" name="numero_exterior" >
+            </div>
+        
+            <div>
+                <label for="numero_interior">Número Interior (opcional):</label>
+                <input type="text" id="numero_interior" name="numero_interior">
+            </div>
+        
+            <div>
+                <label for="colonia">Colonia:</label>
+                <input type="text" id="colonia" name="colonia" >
+            </div>
+        
+            <div>
+                <label for="codigo_postal">Código Postal:</label>
+                <input type="text" id="codigo_postal" name="codigo_postal" >
+            </div>
+        
+            <div>
+                <label for="delegacion">Delegación o Municipio:</label>
+                <input type="text" id="delegacion" name="delegacion" >
+            </div>
+        
+            <!-- Imagenes -->
+            <div>
+                <label for="imagenes">Sube imágenes:</label>
+                <input type="file" id="imagenes" name="imagenes[]" accept="image/*" multiple>
+            </div>
+        
+            <button type="submit">Agregar Propiedad</button>
+        </form>
+    </section>
+
+    <footer>
+        <div class="footer-div">
+            <p>&copy; <span id="year"></span> Homebook. Todos los derechos reservados.</p><br>
+            <div class="redes">
+                <p>
+                            <!-- Enlace a Instagram -->
+        <a href="https://www.instagram.com/bookhome_app/?next=%2F&hl=es" target="_blank">
+            <ion-icon name="logo-instagram"></ion-icon>
+        </a>
+
+        <!-- Enlace a WhatsApp -->
+        <a href="https://wa.me/525528456729" target="_blank">
+            <ion-icon name="logo-whatsapp"></ion-icon>
+        </a>
+
+        <!-- Enlace a Facebook (debes agregar la URL correcta de tu perfil o página) 
+        <a href="https://www.facebook.com/tu.pagina" target="_blank">
+            <ion-icon name="logo-facebook"></ion-icon>
+        </a>-->
+
+        <!-- Enlace a Twitter -->
+        <a href="https://x.com/hoomebook51521" target="_blank">
+            <ion-icon name="logo-twitter"></ion-icon>
+        </a>
+
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/Arrendador/JS/editarPropiedad.js"></script>
+    <script src="/Arrendador/JS/script.js"></script>
+</body>
+<script>
+    let lastScrollY = 0;
+    const menu = document.querySelector('.menu');
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > lastScrollY) {
+            menu.classList.add('hidden'); // Oculta al bajar
+        } else {
+            menu.classList.remove('hidden'); // Muestra al subir
+        }
+        lastScrollY = window.scrollY;
+    });
+</script>
+</html>

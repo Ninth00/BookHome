@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/CSS/pags.css">
+    <title>Document</title>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+<body>
+    
+    <header class="header">
+        <div class="menu">
+            <a href="/Inicio/index.html" class="logo"><img src="/IMAGENES/img17.png" alt="Logo" class="logo-img"></a>
+            <input type="checkbox" id="menu-toggle">
+            <label for="menu-toggle" class="menu-icon">&#9776;</label>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="/Inicio/index.html">Inicio</a></li>
+                    <li><a href="/Inicio/nosotros.html">Nosotros</a></li>
+                    <li><a href="/Inicio/inicio.html">Iniciar Sesión o Registrarse</a></li>
+                    <li><a href="/Inicio/logout.html">Cerrar sesión</a></li>
+                    <li><a>  </a></li>
+                </ul>
+            </nav>
+        </div>
+    
+        <div class="header-content container">
+            <div class="header-txt">
+                <h1>BIENVENIDO A BOOK-HOME</h1>
+                <p>"Tu plataforma confiable para encontrar el hogar de tus sueños."
+                    <hr>
+                </p>
+                <a href="/Inicio/inicio.html" class="btn-1">Conocenos</a>
+            </div>
+        </div>
+    </header>
+
+    <footer>
+        <div class="footer-div">
+            <p>&copy; <span id="year"></span> Homebook. Todos los derechos reservados.</p><br>
+            <div class="redes">
+                <p>
+                            <!-- Enlace a Instagram -->
+        <a href="https://www.instagram.com/bookhome_app/?next=%2F&hl=es" target="_blank">
+            <ion-icon name="logo-instagram"></ion-icon>
+        </a>
+
+        <!-- Enlace a WhatsApp -->
+        <a href="https://wa.me/525528456729" target="_blank">
+            <ion-icon name="logo-whatsapp"></ion-icon>
+        </a>
+
+        <!-- Enlace a Facebook (debes agregar la URL correcta de tu perfil o página) 
+        <a href="https://www.facebook.com/tu.pagina" target="_blank">
+            <ion-icon name="logo-facebook"></ion-icon>
+        </a>-->
+
+        <!-- Enlace a Twitter -->
+        <a href="https://x.com/hoomebook51521" target="_blank">
+            <ion-icon name="logo-twitter"></ion-icon>
+        </a>
+
+                </p>
+            </div>
+        </div>
+    </footer>
+        
+
+    
+</body>
+<script>
+    let lastScrollY = 0;
+    const menu = document.querySelector('.menu');
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > lastScrollY) {
+            menu.classList.add('hidden'); // Oculta al bajar
+        } else {
+            menu.classList.remove('hidden'); // Muestra al subir
+        }
+        lastScrollY = window.scrollY;
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+
+</script>
+</html>

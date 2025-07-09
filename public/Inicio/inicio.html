@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="stylesheet" href="/CSS/estilo.css">
+    <link rel="stylesheet" href="/CSS/swal-estilos.css">
+    <style>
+.modal {
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-contenido {
+  background-color: #000;
+  color: white;
+  padding: 30px;
+  width: 60%;
+  max-width: 800px;
+  max-height: 80vh;
+  border-radius: 10px;
+  border: 2px solid white;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+  overflow-y: auto;
+  position: relative;
+}
+
+.modal-contenido h2 {
+  margin-top: 0;
+  color: #fff;
+}
+
+.modal-contenido p {
+  color: #ddd;
+  line-height: 1.6;
+}
+
+#cerrarModal {
+  color: white;
+  font-size: 24px;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  cursor: pointer;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+</style>
+</head>
+<body>
+    <div class="container">
+        <div class="container-form">
+            <form class="sign-in">
+                <h2>Iniciar Sesión</h2>
+                <!-- <div class="social-networks">
+                    <ion-icon name="alogo-google"></ion-icon>
+                    <ion-icon name="logo-facebook"></ion-icon>
+                </div> -->
+                <span>Use su correo y contraseña</span>
+                <div class="container-input">
+                    <ion-icon name="mail-outline"></ion-icon>
+                    <input type="text" placeholder="Email">
+                </div>
+                <div class="container-input">
+                    <ion-icon name="lock-closed-outline"></ion-icon>
+                    <input type="password" placeholder="Contraseña">
+                </div>
+                <a href="#">¿Olvidaste tu contraseña?</a>
+                <button class="button">INICIAR SESIÓN</button>
+            </form>
+        </div>
+        <div class="container-form">
+            <form class="sign-up">
+                <h2>Registrarse</h2>
+                 <!-- <div class="social-networks">
+                    <ion-icon name="logo-google"></ion-icon>
+                    <ion-icon name="logo-facebook"></ion-icon>
+                </div> -->
+                <span>Use su correo electronico para registrarse</span>
+                <div class="container-input">
+                    <ion-icon name="person-outline"></ion-icon>
+                    <input type="text" placeholder="Nombre">
+                </div>
+                <div class="container-input">
+                    <ion-icon name="person-outline"></ion-icon>
+                    <div class="select-rol">
+                        <select name="rol" id="rol">
+                            <option value="arrendador">Arrendador</option>
+                            <option value="estudiante">Estudiante</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="container-input">
+                    <ion-icon name="call-outline"></ion-icon>
+                    <input type="text" placeholder="Telefono">
+                </div>
+                <div class="container-input">
+                    <ion-icon name="mail-outline"></ion-icon>
+                    <input type="text" placeholder="Email">
+                </div>
+                <div class="container-input">
+                    <ion-icon name="lock-closed-outline"></ion-icon>
+                    <input type="password" placeholder="Contraseña">
+                </div>
+                <div class="container-input">
+                    <ion-icon name="lock-closed-outline"></ion-icon>
+                    <input type="password" placeholder="Confirmar Contraseña">
+                </div>
+                <input type="checkbox" id="aceptaTerminos">
+                <label for="aceptaTerminos">
+                He leído y acepto los <a href="#" id="abrirModal">términos y condiciones y el aviso de privacidad.</a>
+                </label>
+
+                <button class="button">REGISTRARSE</button>
+            </form>
+        </div>
+
+        <div class="container-welcome">
+            <div class="welcome-sign-up welcome">
+                <h3>¡Bookhome!</h3>
+                <p>Encuentra tu hogar soñado en CDMX, compra o renta de manera fácil, rápida y segura solo aqui<br> ¿Que esperas para buscarlo?</p>
+                <button class="button" id="btn-sign-up">Registrarse</button>
+            </div>
+            <div class="welcome-sign-in welcome">
+                <h3>¡Bookhome!</h3>
+                <p>Regístrese con sus datos personales para usar todas las funciones del sitio, al registrarse acepta nuestras politicas de uso y privacidad</p>
+                <button class="button" id="btn-sign-in">Iniciar Sesión</button>
+            </div>
+        </div>
+    </div>
+
+<!-- ✅ Modal fuera del formulario -->
+<div id="modalTerminos" class="modal" style="display: none;">
+  <div class="modal-contenido">
+    <span id="cerrarModal" style="float: right; cursor: pointer;">&times;</span>
+    <h2>Términos y Condiciones</h2>
+    <p>MORDOX TECH se compromete a proteger la privacidad y los datos personales de todos sus usuarios. La información que los usuarios proporcionen será tratada con la máxima confidencialidad y será utilizada exclusivamente para los fines previstos en la plataforma. Aseguramos que los datos personales no serán compartidos con terceros sin el consentimiento expreso del usuario y que se adoptarán todas las medidas necesarias para proteger dicha información de accesos no autorizados. Este compromiso con la seguridad de la información es fundamental para mantener la confianza de nuestros usuarios.
+El tratamiento de los datos personales se realizará conforme a lo dispuesto en la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP) y su reglamento, asegurando la confidencialidad y seguridad de la información de los usuarios. Para más información sobre cómo protegemos su información personal, consulte nuestra Política de Privacidad.
+El usuario está obligado a leer, entender y aceptar en su totalidad los Términos de Uso expresados en el presente documento previo a realizar su registro y comenzar su utilización como usuario de BookHome, sin derecho a renunciar a estos. En caso de no aceptar estos Términos de Uso, los cuales son obligatorios y vinculantes, el usuario deberá abstenerse de utilizar los servicios que brinda BookHome, ya que la plataforma se reserva el derecho de restringir sus servicios a todas aquellas personas que se abstengan de aceptar los términos establecidos.
+Al aceptar los Términos de Uso, el usuario reconoce que BookHome actúa únicamente como una plataforma intermediaria y, como tal, no asume ninguna obligación, garantía, responsabilidad o aval respecto de los acuerdos, transacciones o relaciones que los usuarios establezcan entre sí o con terceros a través de la plataforma, incluyendo los contratos de arrendamiento. En este sentido, BookHome no se hace responsable por incumplimientos, daños, pérdidas o cualquier otro perjuicio derivado de las relaciones entre los usuarios. Se aclara que estos Términos de Uso únicamente regirán el uso del sitio web y no las relaciones contractuales que los usuarios celebren entre sí.
+El uso del sitio web y de los servicios de BookHome es bajo el exclusivo riesgo y responsabilidad del usuario, quien deberá llevar a cabo las debidas diligencias antes de celebrar cualquier tipo de acuerdo o transacción. Los servicios están destinados exclusivamente a personas mayores de 18 años. Al acceder o usar el sitio web, el usuario manifiesta y garantiza que es mayor de edad y que cuenta con la capacidad legal para utilizarlo. En caso de actuar en representación de una persona física o moral, el usuario declara y garantiza que cuenta con la autorización y capacidad legal para obligarla a su cumplimiento.
+El acceso y uso del sitio web están sujetos a la licencia de uso otorgada por MORDOX TECH, titular de todos los derechos sobre el contenido, software, diseño y estructura del sitio. Al aceptar los términos de uso, el usuario recibe una licencia limitada, no exclusiva e intransferible para acceder y utilizar el sitio web exclusivamente para fines personales y conforme a lo establecido en este documento. Queda estrictamente prohibido realizar cualquier uso indebido del sistema, incluyendo, pero no limitándose a, la alteración del contenido, la reproducción no autorizada de información, el acceso fraudulento o el uso con fines comerciales sin previa autorización.
+La protección de los datos personales de los usuarios es una prioridad para BookHome. La información proporcionada por los usuarios será tratada conforme a la legislación aplicable en materia de protección de datos personales, asegurando su confidencialidad y utilización únicamente para los fines establecidos en la plataforma. Asimismo, BookHome protege la propiedad intelectual de su contenido y estructura, prohibiendo la reproducción, distribución o modificación sin autorización expresa.
+El incumplimiento de los presentes términos puede derivar en la suspensión o cancelación del acceso a los servicios. Entre las razones de suspensión o cancelación del acceso se incluyen, pero no se limitan a: el uso fraudulento de la plataforma, el incumplimiento de acuerdos con otros usuarios, la divulgación no autorizada de información o cualquier acción que atente contra la seguridad del sistema. En caso de suspensión, el usuario podrá presentar una solicitud de revisión mediante los canales de contacto establecidos en la plataforma. Además, BookHome podrá ejercer las acciones legales correspondientes cuando el incumplimiento de los términos así lo amerite.
+BookHome se reserva el derecho de modificar estos Términos de Uso en cualquier momento, notificando a los usuarios sobre los cambios a través del sitio web.
+</p>
+    <h2>Aviso de Privacidad</h2>
+    <p>Mordox Tech, con domicilio en Mar Mediterráneo N°227, Colonia Popotla, Miguel Hidalgo, 
+Ciudad de México, CP. 11400, es responsable del tratamiento de los datos personales que 
+nos proporcione, los cuales serán protegidos conforme a la Ley General de Protección de 
+Datos Personales en Posesión de Sujetos Obligados y demás normatividad aplicable. 
+Datos personales solicitados y finalidades 
+Los datos personales que solicitamos son: - Nombre completo - Domicilio - Teléfono particular - Teléfono celular - Correo electrónico - Bienes inmuebles - Imágenes del inmueble 
+No se solicitan datos personales sensibles. 
+Finalidades del tratamiento: 
+Finalidad 
+Mostrar los datos de contacto 
+¿Requiere consentimiento del titular? 
+Sí 
+Mostrar la información del inmueble 
+Sí 
+Opciones para limitar el uso de tus datos 
+Puedes negar el consentimiento para estas finalidades: 
+▢ No consiento que mis datos personales se utilicen para mostrar los datos de contacto 
+▢ No consiento que mis datos personales se utilicen para mostrar la información del 
+inmueble 
+O bien, otorgar consentimiento explícito: 
+▢ Consiento que mis datos personales se utilicen para mostrar los datos de contacto 
+▢ Consiento que mis datos personales se utilicen para mostrar la información del inmueble 
+Transferencia de datos personales 
+Destinatario 
+Finalidad 
+¿Requiere consentimiento? 
+Otros usuarios 
+Ver información del 
+inmueble 
+Sí 
+Otros usuarios 
+Ver datos de contacto 
+Sí 
+Puedes negar el consentimiento para estas transferencias: 
+▢ No consiento que mis datos se transfieran para observar: - ▢ Información del inmueble - ▢ Información de contacto 
+O consentirlas expresamente: 
+▢ Consiento que mis datos sean transferidos para observar: - ▢ Información del inmueble - ▢ Información de contacto 
+Nombre y firma del titular: 
+________________________________________________________ 
+Fundamento legal para el tratamiento 
+Ley Federal de Protección de Datos Personales en Posesión de los Particulares. 
+Portabilidad de datos personales 
+Podrás solicitar la portabilidad de tus datos personales en formatos estructurados y de uso 
+común. Datos técnicamente portables: datos de contacto (nombre, correo, teléfono). 
+Derechos ARCO (Acceso, Rectificación, Cancelación y Oposición) 
+Puedes ejercer tus derechos ARCO ante la Unidad de Transparencia: - Titular: Nayeli Hernández Gómez - Domicilio: Ermita s/n, Col. Narvarte Poniente, Benito Juárez, Ciudad de México, CP. 03020 - Correo: ofinfpub00@ssc.cdmx.gob.mx - Teléfono: 5242-5100 ext. 7801 - Contacto adicional: nhernandez@ssc.cdmx.gob.mx 
+También disponible en: http://www.plataformadetransparencia.org.mx 
+Procedimiento: https://home.inai.org.mx/wp
+content/documentos/DPDP/ProcedimientoARCO.pdf 
+Cambios al Aviso de Privacidad 
+El aviso puede modificarse por requerimientos legales o mejoras del sistema. Se notificará 
+mediante mensaje destacado en la página principal de BookHome. 
+Contacto 
+Correo para atención al público: mordoxtech@gmail.com 
+Última actualización: 07 de julio de 2025 
+http://www.plataformadetransparencia.org.mx</p>
+  </div>
+</div>
+
+    <script src="/Inicio/JS/logica.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>

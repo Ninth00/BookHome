@@ -1,0 +1,453 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+:root {
+    --primary-color: #034134;
+    --secondary-color: #333333;
+    --text-color: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+}
+
+body{
+    font-family: "Ubuntu", cursive;
+    background-color: black;
+    margin: 0;
+    padding: 0;
+}
+
+
+p{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.sobre-nosotros{
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    text-align: left;
+}
+
+.container{
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.header{
+    background-image: linear-gradient(
+        rgba(0,0,0,0.5),
+        rgba(0,0,0,0.5)),
+        url(/IMAGENES/img18.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.header-content {
+    text-align: center;
+    color: white;
+}
+
+.header-txt h1 {
+    font-size: 75px;
+    line-height: 110px;
+    margin-bottom: 20px;
+}
+
+.header-txt p {
+    font-size: 16px;
+    color: #E0E0E0;
+    margin-bottom: 25px;
+}
+
+.btn-1{
+    display: inline-block;
+    padding: 11px 45px;
+    background-color: #B7975B;
+    color: white;
+    border-radius: 25px;
+    font-size: 22px;
+}
+
+.btn-1:hover{
+    background-color: #a08450;
+}
+
+.hero {
+    background-image: url('IMAGENES/img4.jpg');
+    background-size: cover;
+    background-position: center;
+    color: var(--highlight-color);
+    padding: 150px 20px;
+    text-align: center;
+}
+
+.hero-content h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+}
+
+.hero-content p {
+    font-size: 1.2em;
+}
+
+.about-section {
+    background: black;
+    padding: 100px 30px;
+    text-align: center;
+    color: white;
+    position: relative;
+}
+
+.about-container {
+    max-width: 850px;
+    margin-left: calc(100vw / 7);
+    text-align: left;
+    
+}
+
+.about-section h2 {
+    font-size: 2.8em;
+    color: #ffffff;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.about-section p {
+    font-size: 1.1em;
+    margin-bottom: 20px;
+    color: #dddddd;
+    line-height: 1.6;
+    text-align: left;
+}
+
+.about-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.values-section {
+    background: black;
+    padding: 100px 30px;
+    color: #bcbcbc;
+    position: relative;
+
+}
+
+.values-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.values-section h2 {
+    font-size: 2.8em;
+    margin-bottom: 30px;
+    color: #ffffff;
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.value-item {
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out, box-shadow 0.3s ease-in-out;
+    border-radius: 4px;
+    padding: 10px;
+    backdrop-filter: blur(2px);
+}
+
+.value-item:hover {
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
+    transform: translateY(-6px);
+    background-color: rgba(255, 255, 255, 0.04);
+}
+
+.value-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.value-item h3 {
+    margin-top: 15px;
+    font-size: 1.5em;
+}
+
+.appear {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.footer-div {
+    background-color: black;
+    padding: 35px;
+    color: white;
+    text-align: center;
+}
+
+.footer-div .redes ion-icon {
+    font-size: 30px;
+    margin: 0 10px;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+}
+
+footer a:visited {
+    color: white;
+}
+
+footer a:hover {
+    color: white;
+}
+
+footer a:active {
+    color: white;
+}
+
+.menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    z-index: 1000;
+    transition: transform 0.3s ease-in-out;
+}
+
+.menu.hidden {
+    transform: translateY(-100%);
+}
+
+.logo-img {
+    height: 70px;
+    width: auto;
+}
+
+.menu-icon {
+    display: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+#menu-toggle {
+    display: none;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    gap: 15px;
+}
+
+.navbar li {
+    position: relative;
+}
+
+.navbar a {
+    text-decoration: none;
+    font-size: 1.1rem;
+    color: white;
+    padding: 5px 10px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    text-align: right;
+}
+
+.navbar a:hover {
+    text-shadow: 0 6px 15px rgba(255, 255, 255, 0.5);
+    transition: text-shadow 0.3s ease-in-out;
+}
+
+@media (max-width: 768px) {
+    .menu-icon {
+        display: block;
+    }
+
+    .navbar {
+        display: none;
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar ul {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .navbar a {
+        border: none;
+        text-align: center;
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .navbar a:last-child {
+        border-bottom: none;
+    }
+
+    #menu-toggle:checked + .menu-icon + .navbar {
+        display: block;
+    }
+}
+
+.navbar li.vender {
+    position: relative;
+}
+
+.navbar li.vender .submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+}
+
+.navbar li.vender:hover .submenu {
+    display: block;
+}
+
+.navbar .submenu li a {
+    padding: 10px 20px;
+    text-align: left;
+    color: white;
+    display: block;
+}
+
+.navbar .submenu li a:hover {
+    text-shadow: 0 6px 15px rgba(255, 255, 255, 0.5);
+    transition: text-shadow 0.3s ease-in-out;
+}
+
+.content{
+    margin-top: 100px;
+    margin-right: 180px;
+    margin-left: 180px;
+    margin-bottom: 100px;
+}
+
+/* 1. Eliminar visualmente la línea en el header sin eliminar <hr> si estuviera */
+.intro-text hr {
+    display: none;
+}
+
+.vision-section .about-container {
+    background-color: rgba(0, 0, 0, 0.4); /* opcional: caja semitransparente */
+    padding: 40px;
+    border-radius: 10px;
+}
+
+.vision-section h2 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.vision-section p {
+    font-size: 1.2em;
+    color: #eeeeee;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.vision-section .about-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+/* 🔧 1. Quitar la separación entre imagen y sección "Nuestros Valores" */
+.values-section {
+    margin-top: -1px; /* ajusta contacto visual directo con la imagen anterior */
+}
+
+/* 🎯 2. Fondo hero para la sección Visión sin recuadro ni imagen */
+.vision-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url('/IMAGENES/img19.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 150px 20px;
+    text-align: center;
+    color: white;
+}
+
+.vision-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.vision-content h2 {
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+.vision-content p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    color: #f0f0f0;
+}
+
+/* --- Scroll Reveal para textos específicos --- */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.reveal.appear {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.vision-section {
+    position: relative;
+    min-height: 400px; /* asegura que haya espacio para colocar la frase abajo */
+    padding-bottom: 80px; /* da espacio para no tapar contenido */
+}
+
+.frase {
+    position: absolute;
+    bottom: 20px;
+    right: 30px;
+    font-size: 0.95em;
+    font-style: normal;
+    color: #ffffff;
+    opacity: 0.6;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

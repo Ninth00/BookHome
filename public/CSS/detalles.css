@@ -1,0 +1,353 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+:root {
+    --primary-color: #034134;
+    --secondary-color: #ffffff;
+    --text-color: white;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+}
+/* Menú */
+body {
+    font-family: "Ubuntu", cursive;
+    background-color: black;
+}
+.content {
+    margin-top: 100px;
+    margin-right: 180px;
+    margin-left: 180px;
+    margin-bottom: 100px;
+    
+}
+/* Contenedor principal */
+.detalle-contenedor {
+    display: flex;
+    flex-direction: column; /* Organiza los elementos en columna: imágenes arriba, texto abajo */
+    gap: 20px; /* Espacio entre las imágenes y la información */
+    background-color: #121212; /* Fondo gris claro */
+    border-radius: 10px; /* Bordes redondeados */
+    padding: 20px; /* Espaciado interno */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+}
+/* Contenedor de las imágenes en fila */
+.imagenes-contenedor {
+    display: flex; /* Organiza las imágenes en una fila horizontal */
+    gap: 15px; /* Espacio entre las imágenes */
+    flex-wrap: wrap; /* Permite que las imágenes pasen a una nueva línea cuando sea necesario */
+    justify-content: start; /* Alinea las imágenes al principio de la fila */
+    margin-bottom: 20px; /* Espaciado debajo de las imágenes */
+}
+/* Cada imagen */
+.imagen-item {
+    flex-shrink: 0; /* Asegura que las imágenes no se reduzcan */
+    width: 250px; /* Ancho fijo para cada imagen, ajustable */
+    height: 150px; /* Altura fija para cada imagen, ajustable */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para un efecto agradable */
+    overflow: hidden; /* Esconde cualquier parte de la imagen que se desborde */
+}
+/* Estilo para las imágenes */
+.foto-detalle {
+    width: 100%; /* La imagen ocupa todo el ancho de su contenedor */
+    height: 100%; /* La imagen ocupa toda la altura de su contenedor */
+    object-fit: cover; /* Ajusta la imagen para cubrir todo el contenedor sin distorsión */
+}
+/* Información debajo de las imágenes */
+.info-detalle {
+    text-align: justify; /* Justifica el texto */
+    padding: 20px; /* Espaciado interno */
+    color: white; /* Color del texto */
+    line-height: 1.6; /* Espaciado entre líneas */
+}
+.info-detalle h1 {
+    font-size: 1.8rem;
+    color: white;
+    margin-bottom: 20px;
+}
+.info-detalle p {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: white;
+}
+/* Responsivo */
+@media (max-width: 768px) {
+    /* Las imágenes se apilan en pantallas pequeñas */
+    .imagenes-contenedor {
+        flex-direction: column; /* Las imágenes se apilan verticalmente en pantallas pequeñas */
+        align-items: center; /* Centra las imágenes */
+        overflow-x: hidden; /* Elimina el desplazamiento horizontal en pantallas pequeñas */
+    }
+    .foto-detalle {
+        max-width: 100%; /* Las imágenes ocuparán todo el ancho disponible en pantallas pequeñas */
+        height: auto; /* Ajusta la altura de las imágenes para mantener las proporciones */
+    }
+    .info-detalle {
+        text-align: center; /* Centra el texto en pantallas pequeñas */
+    }
+}
+/* Footer */
+.footer-div {
+    background-color: black;
+    padding: 35px;
+    color: white;
+    text-align: center;
+}
+.footer-div .redes ion-icon {
+    font-size: 30px;
+    margin: 0 10px;
+}
+footer a {
+    color: white; /* Color de los enlaces */
+    text-decoration: none; /* Elimina el subrayado */
+}
+footer a:visited {
+    color: white; /* Color para enlaces visitados */
+}
+footer a:hover {
+    color: white; /* Color al pasar el cursor */
+}
+footer a:active {
+    color: white; /* Color al hacer clic */
+}
+/*Barra de navegacion*/
+.menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    z-index: 1000;
+    transition: transform 0.3s ease-in-out;
+}
+
+.menu.hidden {
+    transform: translateY(-100%);
+}
+
+
+.logo-img {
+    height: 70px;     /* Puedes aumentar o reducir el tamaño */
+    width: auto;      /* Mantiene la proporción */
+}
+
+
+.menu-icon {
+    display: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+#menu-toggle {
+    display: none;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    gap: 15px;
+}
+
+.navbar li {
+    position: relative;
+}
+
+.navbar a {
+    text-decoration: none;
+    font-size: 1.1rem;
+    color: white;
+    padding: 5px 10px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    text-align: right;
+}
+
+/* Hover en texto */
+.navbar a:hover {
+    text-shadow: 0 6px 15px rgba(255, 255, 255, 0.5);
+    transition: text-shadow 0.3s ease-in-out;
+}
+
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .menu-icon {
+        display: block;
+    }
+
+    .navbar {
+        display: none;
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar ul {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .navbar a {
+        border: none;
+        text-align: center;
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .navbar a:last-child {
+        border-bottom: none;
+    }
+
+    #menu-toggle:checked + .menu-icon + .navbar {
+        display: block;
+    }
+}
+
+
+/* Estilo para el submenú */
+.navbar li.vender {
+    position: relative;
+}
+
+.navbar li.vender .submenu {
+    display: none;
+    position: absolute;
+    top: 100%; /* Coloca el submenú debajo de "Vender" */
+    left: 0;
+    z-index: 1000;
+}
+
+.navbar li.vender:hover .submenu {
+    display: block;
+}
+
+.navbar .submenu li a {
+    padding: 10px 20px;
+    text-align: left;
+    color: white;
+    display: block;
+}
+
+.navbar .submenu li a:hover {
+    text-shadow: 0 6px 15px rgba(255, 255, 255, 0.5);
+    transition: text-shadow 0.3s ease-in-out;
+}
+/*Aqui acaba la barra de navegacion*/
+
+/*CONTENT Y SOPORTA*/
+.content{
+    margin-top: 100px;
+    margin-right: 180px;
+    margin-left: 180px;
+    margin-bottom: 100px;
+}
+/*Año*/
+#chat-widget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-family: "Ubuntu", sans-serif;
+    z-index: 1001;
+}
+
+#start-chat {
+    background-color: #3b3a40;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+#chat-box {
+    width: 300px;
+    height: 400px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    overflow: hidden;
+    position: absolute;
+    bottom: 50px;
+    right: 0;
+}
+
+#chat-box.hidden {
+    display: none;
+}
+
+.chat-header {
+    background: #2c2c30;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chat-messages {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+    background: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.chat-input {
+    display: flex;
+    border-top: 1px solid #ccc;
+}
+
+.chat-input input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    outline: none;
+}
+
+.chat-input button {
+    padding: 10px;
+    background: #2c2c30;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.mensaje {
+    padding: 8px;
+    border-radius: 10px;
+    max-width: 80%;
+    word-wrap: break-word;
+}
+
+.mensaje-otro {
+    align-self: flex-start;
+    background-color: #3b3a40;
+}
+
+.mensaje-propio {
+    align-self: flex-end;
+    background-color: black;
+    color: white;
+}

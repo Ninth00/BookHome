@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosotros - Book-Home</title>
+    <link rel="stylesheet" href="/CSS/nosotros.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+<header class="header">
+    
+    <div class="menu">
+        <a href="/Inicio/index.html" class="logo"><img src="/IMAGENES/img17.png" alt="Logo" class="logo-img"></a>
+        <input type="checkbox" id="menu-toggle">
+        <label for="menu-toggle" class="menu-icon">&#9776;</label>
+        <nav class="navbar">
+            <ul>
+                <li><a href="/Inicio/index.html">Inicio</a></li>
+                    <li><a href="/Inicio/nosotros.html">Nosotros</a></li>
+                    <li><a href="/Inicio/inicio.html">Iniciar Sesión o Registrarse</a></li>
+                    <li><a href="/Inicio/logout.html">Cerrar sesión</a></li>
+                    <li><a>  </a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="header-content container">
+        <div class="header-txt">
+            <h1>BIENVENIDO A BOOK-HOME</h1>
+            <p>BOOK-HOME es un proyecto dedicado a la renta de 
+                    casas, habitaciones, departamentos, orientado a facilitar el proceso de renta de 
+                    propiedades tanto para usuarios comunes como para arrendadores. 
+                    Nuestra plataforma digital permite a los usuarios consultar inmobiliarios
+                    y ver cuál se adapta mejor a sus necesidades.
+                <hr>
+            </p>
+        </div>
+    </div>
+</header>
+<body>
+
+    <section class="about-section">
+        <div class="about-container">
+            <h2 class="reveal">Sobre Nosotros</h2>
+                <p class="sobre-nosotros reveal">
+                    Somos una plataforma diseñada para estudiantes que buscan un lugar accesible, seguro y cercano a su universidad dentro del área metropolitana de la Ciudad de México. Nuestra web facilita la búsqueda de departamentos y casas en renta o venta, conectando directamente a los arrendadores con jóvenes universitarios que desean optimizar su tiempo y calidad de vida.
+Nos enfocamos en ofrecer opciones confiables, con información clara, filtros personalizados y un proceso amigable tanto para arrendadores como para estudiantes.
+                </p><br>
+                <h2 class="reveal">Misión</h2>
+                <p class="sobre-nosotros reveal">
+                    Brindar a los estudiantes universitarios del área metropolitana de la Ciudad de México una solución confiable y eficiente para encontrar propiedades en renta o venta, cercanas a sus centros educativos, al mismo tiempo que ofrecemos a los arrendadores una plataforma segura y efectiva para publicar sus inmuebles.
+                </p><br>
+                <h2 class="reveal">Visión</h2>
+                <p class="sobre-nosotros reveal">
+                    Ser la plataforma líder en la Ciudad de México en conectar a estudiantes con espacios habitacionales ideales para sus necesidades académicas y personales, promoviendo comunidades seguras, accesibles y bien ubicadas que impulsen su desarrollo integral.
+                </p>
+        </div>
+    </section>
+
+    <section class="about-section vision-section">
+        <div class="vision-content">
+            <p class="frase reveal">Lejos de casa, pero más cerca de tus sueños: ¡haz que cada paso valga la pena!</p>
+        </div>
+    </section>
+
+
+    <section class="values-section">
+        <div class="values-container">
+            <h2>Nuestros Valores</h2>
+            <div class="values-grid">
+                <div class="value-item">
+                    <img src="/IMAGENES/img7.jfif" alt="Confianza">
+                    <h3>Confianza</h3>
+                    <p>Creemos en la transparencia y la honestidad en cada transacción.</p><br>
+                </div>
+                <div class="value-item">
+                    <img src="/IMAGENES/img16.jpg" alt="Compromiso">
+                    <h3>Compromiso</h3>
+                    <p>Nos comprometemos a brindar un servicio de alta calidad.</p><br>
+                </div>
+                <div class="value-item">
+                    <img src="/IMAGENES/img8.jpg" alt="Innovación">
+                    <h3>Innovación</h3>
+                    <p>Utilizamos tecnología avanzada para hacer tu experiencia más eficiente.</p><br>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-div">
+            <p>&copy; <span id="year"></span> Homebook. Todos los derechos reservados.</p><br>
+            <div class="redes">
+                <p>
+                            <!-- Enlace a Instagram -->
+        <a href="https://www.instagram.com/bookhome_app/?next=%2F&hl=es" target="_blank">
+            <ion-icon name="logo-instagram"></ion-icon>
+        </a>
+
+        <!-- Enlace a WhatsApp -->
+        <a href="https://wa.me/525528456729" target="_blank">
+            <ion-icon name="logo-whatsapp"></ion-icon>
+        </a>
+
+        <!-- Enlace a Facebook (debes agregar la URL correcta de tu perfil o página) 
+        <a href="https://www.facebook.com/tu.pagina" target="_blank">
+            <ion-icon name="logo-facebook"></ion-icon>
+        </a>-->
+
+        <!-- Enlace a Twitter -->
+        <a href="https://x.com/hoomebook51521" target="_blank">
+            <ion-icon name="logo-twitter"></ion-icon>
+        </a>
+
+                </p>
+            </div>
+        </div>
+    </footer>
+        
+</body>
+<script>
+    let lastScrollY = 0;
+    const menu = document.querySelector('.menu');
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > lastScrollY) {
+            menu.classList.add('hidden'); // Oculta al bajar
+        } else {
+            menu.classList.remove('hidden'); // Muestra al subir
+        }
+        lastScrollY = window.scrollY;
+    });
+
+    document.addEventListener("DOMContentLoaded", () => {
+    const items = document.querySelectorAll(".value-item");
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("appear");
+            } else {
+                entry.target.classList.remove("appear");
+            }
+        });
+    }, { threshold: 0.99 });
+
+    items.forEach(item => observer.observe(item));
+});
+
+document.getElementById("year").textContent = new Date().getFullYear();
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const targets = document.querySelectorAll(".reveal");
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("appear");
+                    observer.unobserve(entry.target); // una sola vez
+                }
+            });
+        }, {
+            threshold: 0.2
+        });
+
+        targets.forEach(el => observer.observe(el));
+    });
+
+</script>
+</html>

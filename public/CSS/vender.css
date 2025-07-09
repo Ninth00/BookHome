@@ -1,0 +1,353 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+:root {
+    --primary-color: #000000;
+    --secondary-color: #333333;
+    --text-color: #ffffff;
+    --background-color: #1d1a1a;
+    --highlight-color: #ffffff;
+}
+
+body {
+    font-family: "Ubuntu", sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.img-logo {
+    border-radius: 50%;
+    width: 10%;
+}
+
+.header {
+    background-image: linear-gradient(
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.5)),
+        url(/IMAGENES/img10.jpeg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.header-content {
+    text-align: center;
+    color: white;
+}
+
+.header-txt h1 {
+    font-size: 75px;
+    line-height: 110px;
+    margin-bottom: 20px;
+}
+
+.header-txt p {
+    font-size: 16px;
+    color: #E0E0E0;
+    margin-bottom: 25px;
+}
+
+.header-txt hr {
+    border: 1px solid #ddd;
+    margin-top: 20px;
+}
+
+.btn-1 {
+    display: inline-block;
+    padding: 11px 45px;
+    background-color: #B7975B;
+    color: white;
+    border-radius: 25px;
+    font-size: 22px;
+}
+
+.btn-1:hover {
+    background-color: #a08450;
+}
+
+/* FORMULARIO OSCURO Y PROFESIONAL */
+.content {
+    padding: 40px 30px;
+    background-color: #2e2e2e;
+    border-radius: 12px;
+    width: 80%;
+    margin: 60px auto;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    color: #ffffff;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+form div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+label {
+    font-size: 1em;
+    color: #ffffff;
+    font-weight: 500;
+}
+
+select,
+input,
+textarea {
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: 1px solid #555;
+    font-size: 1em;
+    background-color: #1c1c1c;
+    color: #ffffff;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+select:focus,
+input:focus,
+textarea:focus {
+    border-color: #888;
+    background-color: #262626;
+}
+
+textarea {
+    resize: vertical;
+    height: 120px;
+}
+
+button[type="submit"] {
+    padding: 15px 25px;
+    background-color: #000000;
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1em;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s;
+}
+
+button[type="submit"]:hover {
+    background-color: #ffffff;
+    color: #000000;
+    border: 1px solid #ffffff;
+    transform: scale(1.02);
+}
+
+
+/*Barra de navegacion*/
+.menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    z-index: 1000;
+    transition: transform 0.3s ease-in-out;
+}
+
+.menu.hidden {
+    transform: translateY(-100%);
+}
+
+
+.logo-img {
+    height: 70px;     /* Puedes aumentar o reducir el tamaño */
+    width: auto;      /* Mantiene la proporción */
+}
+
+
+.menu-icon {
+    display: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+#menu-toggle {
+    display: none;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    gap: 15px;
+}
+
+.navbar li {
+    position: relative;
+}
+
+.navbar a {
+    text-decoration: none;
+    font-size: 1.1rem;
+    color: white;
+    padding: 5px 10px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    text-align: right;
+}
+
+/* Hover en texto */
+.navbar a:hover {
+    text-shadow: 0 6px 15px rgba(255, 255, 255, 0.5);
+    transition: text-shadow 0.3s ease-in-out;
+}
+
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .menu-icon {
+        display: block;
+    }
+
+    .navbar {
+        display: none;
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar ul {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .navbar a {
+        border: none;
+        text-align: center;
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .navbar a:last-child {
+        border-bottom: none;
+    }
+
+    #menu-toggle:checked + .menu-icon + .navbar {
+        display: block;
+    }
+}
+
+
+/* Estilo para el submenú */
+.navbar li.vender {
+    position: relative;
+}
+
+.navbar li.vender .submenu {
+    display: none;
+    position: absolute;
+    top: 100%; /* Coloca el submenú debajo de "Vender" */
+    left: 0;
+    z-index: 1000;
+}
+
+.navbar li.vender:hover .submenu {
+    display: block;
+}
+
+.navbar .submenu li a {
+    padding: 10px 20px;
+    text-align: left;
+    color: white;
+    display: block;
+}
+
+.navbar .submenu li a:hover {
+    text-shadow: 0 6px 15px rgba(255, 255, 255, 0.5);
+    transition: text-shadow 0.3s ease-in-out;
+}
+/*Aqui acaba la barra de navegacion*/
+
+/* Footer */
+.footer-div {
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+    padding: 35px 20px;
+}
+
+.footer-div p {
+    font-size: 14px;
+}
+
+.redes a {
+    margin: 0 10px;
+    font-size: 30px;
+    color: white;
+}
+
+.redes a:hover {
+    color: #ddd;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .menu {
+        padding: 15px;
+    }
+
+    .menu .navbar {
+        display: none;
+    }
+
+    .menu input[type="checkbox"]:checked + .menu-icon + .navbar {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar ul {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .content {
+        width: 95%;
+        padding: 25px;
+    }
+}
+
+@media (max-width: 500px) {
+    .header-txt h1 {
+        font-size: 2em;
+    }
+
+    .header-txt p {
+        font-size: 14px;
+    }
+
+    .footer-div {
+        padding: 20px 10px;
+    }
+}

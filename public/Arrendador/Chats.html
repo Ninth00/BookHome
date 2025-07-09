@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mis Chats - Arrendador</title>
+    <link rel="stylesheet" href="/CSS/chats.css">
+</head>
+<body>
+    <header class="header">
+        <div class="menu">
+            <a href="/Arrendador/Arrendador.html" class="logo"><img src="/IMAGENES/img17.png" alt="Logo" class="logo-img"></a>
+            <input type="checkbox" id="menu-toggle">
+            <label for="menu-toggle" class="menu-icon">&#9776;</label>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="/Arrendador/Arrendador.html">Inicio</a></li>
+                    <li><a href="/Arrendador/nosotros2.html">Nosotros</a></li>
+                    <li class="vender">
+                        <a href="/Arrendador/vender.html">Arrendar</a>
+                        <ul class="submenu">
+                            <li><a href="/Arrendador/Mis_propiedades.html">Mis propiedades</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/Arrendador/Chats.html">Chats</a></li>
+                    <li><a href="/Inicio/logout.html">Cerrar sesión</a></li>
+                    <li><a>  </a></li>
+                </ul>
+            </nav>
+        </div>
+
+<!-- ... tu header y nav ya existentes ... -->
+
+<div class="chat-wrapper">
+    <div class="sidebar">
+        <ul id="chatList" class="chat-list"></ul>
+    </div>
+
+    <div class="chat-container">
+        <div class="chat-header" id="chatHeader">Selecciona un chat</div>
+        <div class="chat-messages" id="chatMessages"></div>
+        <div class="chat-input">
+            <input type="text" id="inputMessage" placeholder="Escribe un mensaje..." />
+            <button onclick="enviarMensaje()">Enviar</button>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://cdn.socket.io/4.0.1/socket.io.min.js"></script>
+<script>
+const socket = io();
+let id_usuario = null;
+let id_conversacion_activa = null;
+
+// Obtener ID del arrendador logueado
+fetch('/usuario')
+    .then(res => res.json())
+    .then(data => {
+        id_usuario = data.userId;
+        cargarConversaciones(id_usuario);
+    });
+
+function cargarConversaciones(id_arrendador) {
+    fetch(`/conversaciones-arrendador/${id_arrendador}`)
+        .then(res => res.json())
+        .then(conversaciones => {
+            const chatList = document.getElementById('chatList');
+            chatList.innerHTML = '';
+            conversaciones.forEach(chat => {
+                const li = document.createElement('li');
+                li.textContent = `${chat.estudiante_nombre} - Propiedad: ${chat.propiedad}`;
+                li.onclick = () => seleccionarChat(chat);
+                chatList.appendChild(li);
+            });
+        });
+}
+
+function seleccionarChat(chat) {
+    id_conversacion_activa = chat.id_conversacion;
+    document.getElementById('chatHeader').textContent = `Con ${chat.estudiante_nombre} - Propiedad: ${chat.propiedad}`;
+    document.getElementById('chatMessages').innerHTML = '';
+
+    socket.emit('unirseSala', `chat-${id_conversacion_activa}`);
+
+    fetch(`/mensajes/${id_conversacion_activa}`)
+        .then(res => res.json())
+        .then(mensajes => {
+            const msgDiv = document.getElementById('chatMessages');
+            msgDiv.innerHTML = '';
+            mensajes.forEach(msg => {
+                const msgEl = document.createElement('div');
+                msgEl.classList.add('mensaje');
+                msgEl.classList.add(msg.id_usuario == id_usuario ? 'mensaje-propio' : 'mensaje-otro');
+                msgEl.textContent = msg.mensaje;
+                msgDiv.appendChild(msgEl);
+            });
+            msgDiv.scrollTop = msgDiv.scrollHeight;
+        });
+}
+
+function enviarMensaje() {
+    const input = document.getElementById('inputMessage');
+    const mensaje = input.value.trim();
+
+    if (mensaje && id_conversacion_activa) {
+        fetch('/mensaje', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                id_conversacion: id_conversacion_activa,
+                id_usuario: id_usuario,
+                mensaje: mensaje
+            })
+        }).then(() => {
+            input.value = '';
+        });
+    }
+}
+socket.off('nuevoMensaje');
+socket.on('nuevoMensaje', (data) => {
+    if (data.id_conversacion == id_conversacion_activa) {
+        const msgEl = document.createElement('div');
+        msgEl.classList.add('mensaje');
+        msgEl.classList.add(data.id_usuario == id_usuario ? 'mensaje-propio' : 'mensaje-otro');
+        msgEl.textContent = data.mensaje;
+        document.getElementById('chatMessages').appendChild(msgEl);
+        document.getElementById('chatMessages').scrollTop = document.getElementById('chatMessages').scrollHeight;
+    }
+});
+</script>
+</body>
+</html>

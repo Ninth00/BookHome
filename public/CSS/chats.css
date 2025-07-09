@@ -1,0 +1,372 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+
+p{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container{
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.header{
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    
+}
+
+
+.header-content {
+    text-align: center;
+    color: white;
+}
+
+.header-txt h1 {
+    font-size: 75px;
+    line-height: 110px;
+    margin-bottom: 20px;
+}
+
+.header-txt p {
+    font-size: 16px;
+    color: #E0E0E0;
+    margin-bottom: 25px;
+}
+
+.btn-1{
+    display: inline-block;
+    padding: 11px 45px;
+    background-color: black;
+    color: white;
+    border-radius: 25px;
+    font-size: 22px;
+}
+
+.btn-1:hover{
+    background-color: white;
+    color: black;
+}
+
+/* Footer */
+.footer-div {
+    background-color: black;
+    padding: 35px;
+    color: white;
+    text-align: center;
+}
+
+.footer-div .redes ion-icon {
+    font-size: 30px;
+    margin: 0 10px;
+}
+
+footer a {
+    color: white; /* Color de los enlaces */
+    text-decoration: none; /* Elimina el subrayado */
+}
+
+footer a:visited {
+    color: white; /* Color para enlaces visitados */
+}
+
+footer a:hover {
+    color: white; /* Color al pasar el cursor */
+}
+
+footer a:active {
+    color: white; /* Color al hacer clic */
+}
+
+
+/*Barra de navegacion*/
+.menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    z-index: 1000;
+    transition: transform 0.3s ease-in-out;
+}
+
+.menu.hidden {
+    transform: translateY(-100%);
+}
+
+
+.logo-img {
+    height: 70px;     /* Puedes aumentar o reducir el tamaño */
+    width: auto;      /* Mantiene la proporción */
+}
+
+
+.menu-icon {
+    display: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+#menu-toggle {
+    display: none;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    gap: 15px;
+}
+
+.navbar li {
+    position: relative;
+}
+
+.navbar a {
+    text-decoration: none;
+    font-size: 1.1rem;
+    color: white;
+    padding: 5px 10px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    text-align: right;
+}
+
+/* Hover en texto */
+.navbar a:hover {
+    text-shadow: 0 6px 15px rgba(255, 255, 255, 0.5);
+    transition: text-shadow 0.3s ease-in-out;
+}
+
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .menu-icon {
+        display: block;
+    }
+
+    .navbar {
+        display: none;
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar ul {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .navbar a {
+        border: none;
+        text-align: center;
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .navbar a:last-child {
+        border-bottom: none;
+    }
+
+    #menu-toggle:checked + .menu-icon + .navbar {
+        display: block;
+    }
+}
+
+
+/* Estilo para el submenú */
+.navbar li.vender {
+    position: relative;
+}
+
+.navbar li.vender .submenu {
+    display: none;
+    position: absolute;
+    top: 100%; /* Coloca el submenú debajo de "Vender" */
+    left: 0;
+    z-index: 1000;
+}
+
+.navbar li.vender:hover .submenu {
+    display: block;
+}
+
+.navbar .submenu li a {
+    padding: 10px 20px;
+    text-align: left;
+    color: white;
+    display: block;
+}
+
+.navbar .submenu li a:hover {
+    text-shadow: 0 6px 15px rgba(255, 255, 255, 0.5);
+    transition: text-shadow 0.3s ease-in-out;
+}
+/*Aqui acaba la barra de navegacion*/
+
+/*CONTENT Y SOPORTA*/
+.content{
+    margin-top: 100px;
+    margin-right: 180px;
+    margin-left: 180px;
+    margin-bottom: 100px;
+}
+body {
+    font-family: 'Ubuntu', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    min-height: 100vh;
+}
+/* Contenedor principal del chat */
+.chat-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    margin: 90px auto 20px auto; /* espacio top para navbar */
+    width: 90%;
+    max-width: 1100px;
+    height: 80vh;
+    border-radius: 12px;
+
+    background-color: #121212;
+    
+    /* ✔ Bordes blancos */
+    border: 1px solid white;
+
+    /* ✔ Efecto de iluminación alrededor */
+    box-shadow: 0 0 15px 4px rgba(255, 255, 255, 0.3);
+
+    overflow: hidden;
+}
+
+
+/* Ajustes para la barra lateral */
+.sidebar {
+    width: 30%;
+    background-color: #121212;
+    overflow-y: auto;
+}
+
+/* Lista de chats */
+.chat-list li {
+    padding: 15px;
+    border-bottom: 1px solid white;
+    cursor: pointer;
+    color: white;
+}
+.chat-list li:hover {
+    background-color: #e0e0e0;
+    color: black;
+}
+
+/* Área de conversación */
+.chat-container {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Encabezado del chat */
+.chat-header {
+    background: #121212;
+    color: white;
+    padding: 15px;
+    font-weight: bold;
+    border-bottom: 1px solid white;
+}
+
+/* Mensajes */
+.chat-messages {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    background: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid white;
+}
+
+/* Input */
+.chat-input {
+    display: flex;
+    border-top: 1px solid #121212;
+}
+.chat-input input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    outline: none;
+}
+.chat-input button {
+    background: #121212;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+/* Estilos para mensajes */
+.mensaje {
+    padding: 10px;
+    border-radius: 8px;
+    margin: 5px 0;
+    max-width: 70%;
+}
+.mensaje-propio {
+    align-self: flex-end;
+    background: #121212;
+    color: white;
+}
+.mensaje-otro {
+    align-self: flex-start;
+    background: #3b3a40;
+    color: white;
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+    .chat-wrapper {
+        flex-direction: column;
+        height: auto;
+        width: 95%;
+    }
+
+    .sidebar,
+    .chat-container {
+        width: 100%;
+        height: auto;
+    }
+
+    .chat-container {
+        height: 60vh;
+    }
+
+    .chat-messages {
+        height: 50vh;
+    }
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden; /* Bloquea el scroll global */
+}

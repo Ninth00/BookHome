@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta - Book-Home</title>
+    <link rel="stylesheet" href="/CSS/comprars.css">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://kit.fontawesome.com/9bca7b26a7.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="/CSS/swal-estilos.css">
+
+</head>
+<body>
+    <header class="header">
+        <div class="menu">
+            <a href="/Estudiante/Estudiante.html" class="logo"><img src="/IMAGENES/img17.png" alt="Logo" class="logo-img"></a>
+            <input type="checkbox" id="menu-toggle">
+            <label for="menu-toggle" class="menu-icon">&#9776;</label>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="/Estudiante/Estudiante.html">Inicio</a></li>
+                    <li><a href="/Estudiante/nosotros3.html">Nosotros</a></li>
+                    <li class="vender">
+                        <a href="/Estudiante/comprar.html">Rentar</a>
+                        <ul class="submenu">
+                            <li><a href="/Estudiante/Favoritos.html">Favoritos</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/Estudiante/Historialpagos.html">Historial de Pagos</a></li>
+                    <li><a href="/Inicio/logout.html">Cerrar sesión</a></li>
+                    <li><a>  </a></li>
+                </ul>
+            </nav>
+        </div>
+    
+        <div class="header-content container">
+            <div class="header-txt">
+                <h1>ENCUENTRA PROPIEDADES</h1>
+                <p>Explora y filtra propiedades en renta cercanas a tu universidad. Encuentra espacios seguros, cómodos y accesibles, y contacta directamente con los arrendadores desde nuestra plataforma.
+
+                    <hr>
+                </p>
+            </div>
+        </div>
+    </header>
+    
+    <section class="filtros">
+        <h2>Filtrar Propiedades</h2>
+        <br>
+        <form id="formFiltros">
+            <label>Precio mínimo: <input type="number" name="precioMin"></label>
+            <label>Precio máximo: <input type="number" name="precioMax"></label>
+            <label>Colonia: <input type="text" name="colonia"></label>
+            <label>Tipo de propiedad:
+                <select name="tipo">
+                    <option value="">Todos</option>
+                    <option value="casa">Casa</option>
+                    <option value="departamento">Departamento</option>
+                    <option value="habitacion">Habitación</option>
+                </select>
+            </label>
+            <label>¿Comparte cuarto?
+                <select name="comparte">
+                    <option value="">No filtrar</option>
+                    <option value="1">Sí</option>
+                    <option value="0">No</option>
+                </select>
+            </label>
+            <button type="submit">Aplicar Filtros</button>
+        </form>
+        <br><br>
+        <hr>
+
+    </section>
+   
+    <section class="content">
+        <div class="catalogo" id="catalogoPropiedades">
+            <!-- Las propiedades se cargarán aquí -->
+        </div>
+    </section>
+        
+    <footer>
+        <div class="footer-div">
+            <p>&copy; <span id="year"></span> Homebook. Todos los derechos reservados.</p><br>
+            <div class="redes">
+                <p>
+                            <!-- Enlace a Instagram -->
+        <a href="https://www.instagram.com/bookhome_app/?next=%2F&hl=es" target="_blank">
+            <ion-icon name="logo-instagram"></ion-icon>
+        </a>
+
+        <!-- Enlace a WhatsApp -->
+        <a href="https://wa.me/525528456729" target="_blank">
+            <ion-icon name="logo-whatsapp"></ion-icon>
+        </a>
+
+        <!-- Enlace a Facebook (debes agregar la URL correcta de tu perfil o página) 
+        <a href="https://www.facebook.com/tu.pagina" target="_blank">
+            <ion-icon name="logo-facebook"></ion-icon>
+        </a>-->
+
+        <!-- Enlace a Twitter -->
+        <a href="https://x.com/hoomebook51521" target="_blank">
+            <ion-icon name="logo-twitter"></ion-icon>
+        </a>
+
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/Estudiante/JS/catalogo.js"></script>
+    <script src="/Estudiante/JS/filtro.js"></script>
+</body>
+<script>
+    let lastScrollY = 0;
+    const menu = document.querySelector('.menu');
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > lastScrollY) {
+            menu.classList.add('hidden'); // Oculta al bajar
+        } else {
+            menu.classList.remove('hidden'); // Muestra al subir
+        }
+        lastScrollY = window.scrollY;
+    });
+</script>
+</html>
