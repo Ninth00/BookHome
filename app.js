@@ -52,7 +52,7 @@ app.use(session({
     secret: 'clave_secreta', // Clave secreta para firmar la cookie
     resave: false,            // No reescribir la sesión si no ha cambiado
     saveUninitialized: false,  // Guardar la sesión incluso si no hay datos
-    cookie: { secure: true } // Desactivar 'secure' en desarrollo (cambiar a true en producción)
+    cookie: { secure: false } // Desactivar 'secure' en desarrollo (cambiar a true en producción)
 }));
 
 // CRUD Usuarios
