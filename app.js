@@ -12,7 +12,7 @@ const server = http.createServer(app);
 const io = socketIo(server);
 const axios = require('axios');
 require('dotenv').config();
-
+ 
 const port = 3000;
 
 // Configuración de Multer para almacenar imágenes
