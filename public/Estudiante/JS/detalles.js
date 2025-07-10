@@ -110,19 +110,11 @@ fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURICompo
   .catch(error => {
     console.error("Error en la geocodificación:", error);
   });
+const id_propiedad = new URLSearchParams(window.location.search).get('id');
+renderizarBotonPayPal(id_propiedad);
+}
 
-  document.addEventListener("DOMContentLoaded", async () => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const id_propiedad = urlParams.get('id');
-
-    if (!id_propiedad) {
-        console.error("ID de propiedad no encontrado");
-        return;
-    }
-
-    await cargarDetallesPropiedad(); // Cargar detalles usando ese ID
-
-    // Validar si se puede pagar antes de renderizar el botón 
+function renderizarBotonPayPal(id_propiedad) {
     fetch(`/api/puede-pagar/${id_propiedad}`)
         .then(res => res.json())
         .then(data => {
@@ -139,14 +131,7 @@ fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURICompo
                             },
                             body: JSON.stringify({ id_propiedad })
                         })
-                        .then(res => {
-                            if (!res.ok) {
-                                return res.json().then(errorData => {
-                                    throw new Error(errorData.error || 'Error desconocido al crear orden');
-                                });
-                            }
-                            return res.json();
-                        })
+                        .then(res => res.json())
                         .then(data => data.orderID)
                         .catch(err => {
                             container.innerHTML = `<p style="color: darkred; font-weight: bold;">❌ ${err.message}</p>`;
@@ -191,7 +176,4 @@ fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURICompo
                 <p style="color: red;">No se pudo verificar el estado del pago. Intenta más tarde.</p>
             `;
         });
-});
-
-
 }
