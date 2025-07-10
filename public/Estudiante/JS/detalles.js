@@ -112,101 +112,86 @@ fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURICompo
   });
 
   document.addEventListener("DOMContentLoaded", async () => {
-    await cargarDetallesPropiedad(); // Esperamos a que la propiedad se cargue
-
     const urlParams = new URLSearchParams(window.location.search);
     const id_propiedad = urlParams.get('id');
 
-    if (!id_propiedad) return;
+    if (!id_propiedad) {
+        console.error("ID de propiedad no encontrado");
+        return;
+    }
 
-    
+    await cargarDetallesPropiedad(); // Cargar detalles usando ese ID
+
+    // Validar si se puede pagar antes de renderizar el botón 
+    fetch(`/api/puede-pagar/${id_propiedad}`)
+        .then(res => res.json())
+        .then(data => {
+            const container = document.getElementById('paypal-button-container');
+
+            if (data.puedePagar) {
+                paypal.Buttons({
+                    createOrder: function(data, actions) {
+                        return fetch('/api/paypal/create-order', {
+                            method: 'POST',
+                            credentials: 'include',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({ id_propiedad })
+                        })
+                        .then(res => {
+                            if (!res.ok) {
+                                return res.json().then(errorData => {
+                                    throw new Error(errorData.error || 'Error desconocido al crear orden');
+                                });
+                            }
+                            return res.json();
+                        })
+                        .then(data => data.orderID)
+                        .catch(err => {
+                            container.innerHTML = `<p style="color: darkred; font-weight: bold;">❌ ${err.message}</p>`;
+                            throw err;
+                        });
+                    },
+                    onApprove: function(data, actions) {
+                        return fetch('/api/paypal/capture-order', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({ orderID: data.orderID })
+                        })
+                        .then(res => res.json())
+                        .then(details => {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Pago realizado con éxito',
+                                text: 'Disfruta tu nuevo hogar',
+                            });
+                            container.innerHTML = '<p>Gracias por tu pago. Disfruta tu nuevo hogar.</p>';
+                            setTimeout(() => location.reload(), 30000);
+                        });
+                    },
+                    onError: function(err) {
+                        console.error('Error en el pago:', err);
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Ocurrió un error al procesar el pago.',
+                            text: 'Inténtalo nuevamente',
+                        });
+                    }
+                }).render('#paypal-button-container');
+            } else {
+                container.innerHTML = `<p style="color: darkred; font-weight: bold;">Esta propiedad se encuentra actualmente en renta.</p>`;
+            }
+        })
+        .catch(err => {
+            console.error('Error al verificar si se puede pagar:', err);
+            document.getElementById('paypal-button-container').innerHTML = `
+                <p style="color: red;">No se pudo verificar el estado del pago. Intenta más tarde.</p>
+            `;
+        });
 });
 
-// Validar si se puede pagar antes de renderizar el botón 
-fetch(`/api/puede-pagar/${id_propiedad}`)
-    .then(res => res.json())
-    .then(data => {
-        const container = document.getElementById('paypal-button-container');
-
-        if (data.puedePagar) {
-            // Agregar botón de PayPal
-            paypal.Buttons({
-                createOrder: function(data, actions) {
-                    return fetch('/api/paypal/create-order', {
-                        method: 'POST',
-                        credentials: 'include',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({ id_propiedad })
-                    })
-                    .then(res => {
-                        if (!res.ok) {
-                            return res.json().then(errorData => {
-                                throw new Error(errorData.error || 'Error desconocido al crear orden');
-                            });
-                        }
-                        return res.json();
-                    })
-                    .then(data => data.orderID)
-                    .catch(err => {
-                        container.innerHTML = `
-                            <p style="color: darkred; font-weight: bold;">
-                                ❌ ${err.message}
-                            </p>
-                        `;
-                        throw err; // Evita que continúe el flujo
-                    });
-                },
-                onApprove: function(data, actions) {
-                    return fetch('/api/paypal/capture-order', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({ orderID: data.orderID })
-                    })
-                    // Alertas
-                    .then(res => res.json())
-                    .then(details => {
-                        Swal.fire({
-                        icon: 'succes',
-                        title: 'Pago realizado con éxito',
-                        text: 'Disfruta tu nuevo hogar',
-                        });
-                        
-
-                        // Desactivar botón por 30 segundos
-                        container.innerHTML = '<p>Gracias por tu pago. Disfruta tu nuevo hogar.</p>';
-
-                        setTimeout(() => {
-                            location.reload(); // O volver a consultar /api/puede-pagar si deseas
-                        }, 150000);
-                    });
-                },
-                onError: function(err) {
-                    console.error('Error en el pago:', err);
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Ocurrió un error al procesar el pago.',
-                        text: 'Intentalo nuevamente',
-                        });
-                }
-            }).render('#paypal-button-container');
-        } else {
-            // Si no se puede pagar (ya se pagó), mostrar mensaje genérico
-            container.innerHTML = `
-                <p style="color: darkred; font-weight: bold;">
-                    Esta propiedad se encuentra actualmente en renta.
-                </p>
-            `;
-        }
-    })
-    .catch(err => {
-        console.error('Error al verificar si se puede pagar:', err);
-        document.getElementById('paypal-button-container').innerHTML = `
-            <p style="color: red;">No se pudo verificar el estado del pago. Intenta más tarde.</p>
-        `;
-    });
 
 }
